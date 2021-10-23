@@ -1,0 +1,41 @@
+{% extends 'base/main.html' %}
+{% block content %}
+<!-- {% load crispy_forms_tags %} -->
+
+
+
+<div class="header-bar">
+    <a href="{% url 'tasks' %}">&#8592; Back</a>
+</div>
+
+
+<div class="card-body">
+    <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <!-- {{form|crispy}} -->
+        <input class="button" type="submit" value="Submit">
+    </form>
+
+{% if  tsk.file %}
+<h2 class=""> Uploads</h2>
+    <div class="row">
+
+
+            <div class="">
+                <div class="card h-100 p-4">
+
+
+                   <button style="font-size:24"> <a href="/media/{{tsk.file}}"> <p style="margin-top:10px" class="fa fa-file">View file</p> </a> </button>
+
+                </div>
+            </div>
+
+
+{% endif %}
+
+    </div>
+</div>
+
+
+{% endblock content %}
